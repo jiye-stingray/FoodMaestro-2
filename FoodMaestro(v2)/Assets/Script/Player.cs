@@ -12,4 +12,14 @@ public class Player : MonoBehaviour
         _agent = GetComponent<PolyNavAgent>();
     }
 
+    public void Start()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+
+    }
+
 }

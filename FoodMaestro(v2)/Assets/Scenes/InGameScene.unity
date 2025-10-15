@@ -2359,11 +2359,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361970827}
+  - component: {fileID: 361970831}
   - component: {fileID: 361970830}
   - component: {fileID: 361970829}
   - component: {fileID: 361970828}
   m_Layer: 0
-  m_Name: Navmesh
+  m_Name: Stage1Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2488,6 +2489,18 @@ MonoBehaviour:
   autoRegenerateInterval: 0
   radiusOffset: 0.1
   invertMasterPolygon: 0
+--- !u!114 &361970831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361970826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0c6c0702242314a91db1f98b0a062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &598436295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,11 +2510,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598436297}
-  - component: {fileID: 598436296}
   - component: {fileID: 598436299}
+  - component: {fileID: 598436296}
   - component: {fileID: 598436298}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2771,6 +2784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 962880367}
+  - component: {fileID: 962880372}
   - component: {fileID: 962880369}
   - component: {fileID: 962880371}
   - component: {fileID: 962880370}
@@ -2926,6 +2940,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &962880372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962880366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f104e99b52e7998499367effca986622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0
+  _guest: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,7 +3204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17b3a9a7af5fd24788b0c0ddfc89971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
   _foodId: 0
   isOpen: 0
 --- !u!4 &1056183278 stripped
