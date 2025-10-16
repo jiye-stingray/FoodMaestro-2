@@ -10,7 +10,7 @@ public class Guest : MonoBehaviour
 
     Userinfo userinfo => Managers.Instance.GetUserinfo();
 
-
+   List<OrderData> _orderList = new List<OrderData>();      // 주문 목록
 
     public void Init()
     {
@@ -18,10 +18,26 @@ public class Guest : MonoBehaviour
         _agent.map = Managers.Instance.GetMapManager()._dicMaps[userinfo._stageIndex]._polyMap;
         _agent.OnDestinationReached += DestinationReached;
 
+        isOrdered = false;
+        _orderList.Clear();
     }
 
     public void Order()
     {
+        // order 생성
+        int count = Random.Range(1, 3);     // 주문 갯수
+        for (int i = 0; i < count; i++)
+        {
+            OrderData orderData = new OrderData()
+            {
+                // 해금된 요리 id 주기
+                _orderdGuest = this,
+            };
+            _orderList.Add(orderData);
+        }
+
+        userinfo.AddOrder(_orderList);
+        
         isOrdered = true;
     }
 

@@ -48,6 +48,10 @@ public class Player : MonoBehaviour
         _walkType = walkType;
     }
 
-
+    public void InitOrder(OrderData orderData)
+    {
+        // 음식 할당
+        _currentGuest = orderData._orderdGuest;
+    }
 
 }

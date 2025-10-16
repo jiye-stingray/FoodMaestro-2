@@ -10,8 +10,8 @@ public class Userinfo
     private Dictionary<int, Kitchen> _dicKitchens = new Dictionary<int, Kitchen>();
     private Dictionary<int, Table> _dicTables = new Dictionary<int, Table>();
 
-    public List<Guest> _guestList = new List<Guest>();
-
+    public List<Guest> _waitingGuestList = new List<Guest>();          
+    public List<OrderData> _orderDataList = new List<OrderData>();
 
     public void InitKitchen(Kitchen[] kitchens) 
     { 
@@ -52,19 +52,35 @@ public class Userinfo
 
     public void AddGuestList(Guest guest)
     {
-        _guestList.Add(guest);
+        _waitingGuestList.Add(guest);
     }
 
     public Guest ReturnFirstGuest()
     {
-        if( _guestList.Count <= 0 ) return null;
+        if( _waitingGuestList.Count <= 0 ) return null;
 
-        Guest g = _guestList.First();
-        _guestList.RemoveAt(0);
+        Guest g = _waitingGuestList.First();
+        _waitingGuestList.RemoveAt(0);
         return g;
+    }
+
+    #endregion
+
+
+
+    public void AddOrder(List<OrderData> orders)
+    {
+        _orderDataList.AddRange(orders);
     }
 
 
 
-    #endregion
+    public OrderData ReturnFirstOrder()
+    {
+        if(_orderDataList.Count <= 0 ) return null;
+
+        OrderData order = _orderDataList.First();
+        _orderDataList.RemoveAt(0);
+        return order;
+    }
 }

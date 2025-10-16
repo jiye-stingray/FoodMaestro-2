@@ -7,7 +7,7 @@ public class OrderState : State<Player>
     public override void OnEnter()
     {
         // 게스트 주문 받기
-        Debug.Log("Order");
+        _context._currentGuest.Order();
 
         _context._stateMachine.ChangeState<IdleState>();
     }

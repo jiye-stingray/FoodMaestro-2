@@ -9,4 +9,6 @@ public class Kitchen : MonoBehaviour
     public bool isOpen;
 
     public Vector2 _position => gameObject.transform.position;
+
+    public int level;
 }
