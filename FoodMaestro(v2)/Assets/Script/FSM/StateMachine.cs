@@ -54,7 +54,7 @@ public class StateMachine<T>
 
         _previousState = _currentState;
         _currentState = _states[newType];
-        _currentState.OnExit();
+        _currentState.OnEnter();
 
         _elapsedTimeInState = 0.0f;
 

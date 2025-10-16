@@ -16,17 +16,21 @@ public class Guest : MonoBehaviour
     {
         _agent = GetComponent<PolyNavAgent>();
         _agent.map = Managers.Instance.GetMapManager()._dicMaps[userinfo._stageIndex]._polyMap;
-        _agent.OnDestinationReached += SitAtTable;
+        _agent.OnDestinationReached += DestinationReached;
 
     }
 
+    public void Order()
+    {
+        isOrdered = true;
+    }
 
     public void MoveTo(Vector2 position)
     {
         _agent.SetDestination(position);
     }
 
-    public void SitAtTable()
+    public void DestinationReached()
     {
         if (isOrdered) return;
 

@@ -12,6 +12,7 @@ public class Userinfo
 
     public List<Guest> _guestList = new List<Guest>();
 
+
     public void InitKitchen(Kitchen[] kitchens) 
     { 
         _dicKitchens.Clear();
@@ -54,10 +55,16 @@ public class Userinfo
         _guestList.Add(guest);
     }
 
-    public void RemoveGuest(Guest guest)
+    public Guest ReturnFirstGuest()
     {
-        _guestList.Remove(guest);
+        if( _guestList.Count <= 0 ) return null;
+
+        Guest g = _guestList.First();
+        _guestList.RemoveAt(0);
+        return g;
     }
+
+
 
     #endregion
 }
