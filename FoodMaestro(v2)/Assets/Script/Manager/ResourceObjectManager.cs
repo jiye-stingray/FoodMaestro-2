@@ -46,6 +46,10 @@ public class ResourceObjectManager : MonoBehaviour
         {
             result = Resources.Load<Material>(key);
         }
+        else if(t == typeof(ScriptableObject))
+        {
+            result = Resources.Load<ScriptableObject>(key);
+        }
         else if (t == typeof(GameObject))
         {
             result = Resources.Load<GameObject>(key);
@@ -67,6 +71,12 @@ public class ResourceObjectManager : MonoBehaviour
 
         Debug.LogWarning($"Resource not found for key: {key} and type: {typeof(T)}");
         return null;
+    }
+
+    public T[] LoadAll<T>(string key) where T : Object
+    {
+        T[] asset =  Resources.LoadAll<T>(key);
+        return asset;
     }
 
     public void Destroy(GameObject go)

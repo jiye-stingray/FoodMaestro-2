@@ -8,8 +8,10 @@ public class Map : MonoBehaviour
     public int _stageIndex;
     public PolyNavMap _polyMap;
 
-    private void Awake()
+    public MapItemData _mapItemData;
+
+    public void Init()
     {
-        _polyMap = GetComponent<PolyNavMap>();
+        _mapItemData = Managers.Instance.GetUserinfo()._dicMapItemData[_stageIndex];
     }
 }

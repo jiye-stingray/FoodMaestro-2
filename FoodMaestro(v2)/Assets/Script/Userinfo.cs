@@ -5,16 +5,37 @@ using UnityEngine;
 
 public class Userinfo
 {
-    public int _stageIndex;
+    public int _currentStageIndex;
+
+    public Dictionary<int, MapItemData> _dicMapItemData = new Dictionary<int, MapItemData>();
 
     private Dictionary<int, Kitchen> _dicKitchens = new Dictionary<int, Kitchen>();
     private Dictionary<int, Table> _dicTables = new Dictionary<int, Table>();
 
-    public List<Guest> _waitingGuestList = new List<Guest>();          
+    public List<Guest> _waitingGuestList = new List<Guest>();
     public List<OrderData> _orderDataList = new List<OrderData>();
 
-    public void InitKitchen(Kitchen[] kitchens) 
-    { 
+    public Dictionary<int, OrderData> _dicOrderData = new Dictionary<int, OrderData>();
+    public Dictionary<string, FoodItemData> _dicFoodItemData = new Dictionary<string, FoodItemData>();
+
+    public List<int> _unlockFoodLevelList = new List<int>();
+
+
+    public void InitMapItemData()
+    {
+        for (int i = 0; i < Managers.Instance.GetDBManager()._stageCount; i++)
+        {
+            MapItemData mapItemData = new MapItemData()
+            {
+                _stageId = i,
+                _areaLevel = 1      // 초기화
+            };
+            _dicMapItemData.Add(mapItemData._stageId, mapItemData);
+        }
+    }
+
+    public void InitKitchen(Kitchen[] kitchens)
+    {
         _dicKitchens.Clear();
 
         foreach (Kitchen k in kitchens)
@@ -27,7 +48,7 @@ public class Userinfo
     public void InitTable(Table[] tables)
     {
         _dicTables.Clear();
-        foreach(Table table in tables)
+        foreach (Table table in tables)
         {
             _dicTables[table._id] = table;
         }
@@ -45,7 +66,7 @@ public class Userinfo
     {
         Table table = _dicTables.FirstOrDefault(t => t.Value._guest == null).Value;
         Guest guest = Managers.Instance.GetResourceObjectManager().Instantiate("Prefabs/Guest").GetComponent<Guest>();
-        if(guest == null) { Debug.LogError("null prefab"); }
+        if (guest == null) { Debug.LogError("null prefab"); }
         guest.Init();
         table.SetGuest(guest);
     }
@@ -57,7 +78,7 @@ public class Userinfo
 
     public Guest ReturnFirstGuest()
     {
-        if( _waitingGuestList.Count <= 0 ) return null;
+        if (_waitingGuestList.Count <= 0) return null;
 
         Guest g = _waitingGuestList.First();
         _waitingGuestList.RemoveAt(0);
@@ -67,7 +88,7 @@ public class Userinfo
     #endregion
 
 
-
+    #region Order
     public void AddOrder(List<OrderData> orders)
     {
         _orderDataList.AddRange(orders);
@@ -77,10 +98,37 @@ public class Userinfo
 
     public OrderData ReturnFirstOrder()
     {
-        if(_orderDataList.Count <= 0 ) return null;
+        if (_orderDataList.Count <= 0) return null;
 
         OrderData order = _orderDataList.First();
         _orderDataList.RemoveAt(0);
         return order;
     }
+
+    #endregion
+
+    public void InitFoodItemData()
+    {
+        foreach (FoodData data in Managers.Instance.GetDBManager().GetFoodDB().Values)
+        {
+            FoodItemData foodItemData = new FoodItemData()
+            {
+                _id = data._id,
+                _stageId = data._stageID,
+                _isOpen = false
+            };
+            _dicFoodItemData.Add($"{foodItemData._stageId}_{foodItemData._id}", foodItemData);
+        }
+
+        _dicFoodItemData["0_0"]._isOpen = true;
+    }
+
+    public FoodItemData GetRandomOrderFood()
+    {
+
+        var ableFoodList = _dicFoodItemData.Where(pair => pair.Value._isOpen && pair.Value._id <= _dicMapItemData[_currentStageIndex]._areaLevel).ToList();
+        return ableFoodList[Random.Range(0, ableFoodList.Count)].Value;
+
+    }
+
 }

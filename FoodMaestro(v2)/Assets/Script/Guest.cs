@@ -15,7 +15,7 @@ public class Guest : MonoBehaviour
     public void Init()
     {
         _agent = GetComponent<PolyNavAgent>();
-        _agent.map = Managers.Instance.GetMapManager()._dicMaps[userinfo._stageIndex]._polyMap;
+        _agent.map = Managers.Instance.GetMapManager()._dicMaps[userinfo._currentStageIndex]._polyMap;
         _agent.OnDestinationReached += DestinationReached;
 
         isOrdered = false;
@@ -31,6 +31,7 @@ public class Guest : MonoBehaviour
             OrderData orderData = new OrderData()
             {
                 // 해금된 요리 id 주기
+                _foodId = Managers.Instance.GetUserinfo().GetRandomOrderFood()._id,
                 _orderdGuest = this,
             };
             _orderList.Add(orderData);

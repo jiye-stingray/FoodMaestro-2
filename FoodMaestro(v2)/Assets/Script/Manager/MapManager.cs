@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+
     public Dictionary<int, Map> _dicMaps = new Dictionary<int, Map>();
     public void LoadMap()
     {
@@ -15,6 +16,7 @@ public class MapManager : MonoBehaviour
         foreach (var map in maps) 
         {
             _dicMaps[map._stageIndex] = map;
+            map.Init();
         }
 
     }

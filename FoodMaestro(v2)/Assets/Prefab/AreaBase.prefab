@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4275239878506645221}
   m_Layer: 0
-  m_Name: MapBase
+  m_Name: AreaBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

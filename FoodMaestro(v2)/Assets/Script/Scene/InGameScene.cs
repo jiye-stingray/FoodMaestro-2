@@ -8,10 +8,10 @@ public class InGameScene : MonoBehaviour
 
     private void Awake()
     {
-        Kitchen[] kitchens = FindObjectsByType<Kitchen>(FindObjectsSortMode.None);
-        Managers.Instance.GetUserinfo().InitKitchen(kitchens);
-        Table[] tables = FindObjectsByType<Table>(FindObjectsSortMode.None);
-        Managers.Instance.GetUserinfo().InitTable(tables);
+
+        Managers.Instance.GetDBManager().DBLoad();
+
+
     }
 
     public void Start()
@@ -22,6 +22,15 @@ public class InGameScene : MonoBehaviour
 
     public void Init()
     {
+        Kitchen[] kitchens = FindObjectsByType<Kitchen>(FindObjectsSortMode.None);
+        Managers.Instance.GetUserinfo().InitKitchen(kitchens);
+        Table[] tables = FindObjectsByType<Table>(FindObjectsSortMode.None);
+        Managers.Instance.GetUserinfo().InitTable(tables);
+
+        Managers.Instance.GetUserinfo().InitFoodItemData();
+        Managers.Instance.GetUserinfo().InitMapItemData();
+
+
         Managers.Instance.GetMapManager().LoadMap();
     }
 

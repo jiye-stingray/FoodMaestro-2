@@ -2503,6 +2503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageIndex: 0
   _polyMap: {fileID: 0}
+  _mapItemData:
+    _stageId: 0
+    _areaLevel: 0
 --- !u!1 &598436295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,16 +2873,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 265490793}
-    m_ColliderPaths:
-    - - X: -2775000
-        Y: 3600000
-      - X: -7224999
-        Y: 3600000
-      - X: -7224999
-        Y: -3600000
-      - X: -2775000
-        Y: -3600000
   - m_Collider: {fileID: 1112445938}
     m_ColliderPaths:
     - - X: 2225000
@@ -2890,22 +2883,32 @@ CompositeCollider2D:
         Y: -2825000
       - X: 2225000
         Y: -2825000
+  - m_Collider: {fileID: 265490793}
+    m_ColliderPaths:
+    - - X: -2775000
+        Y: 3600000
+      - X: -7224999
+        Y: 3600000
+      - X: -7224999
+        Y: -3600000
+      - X: -2775000
+        Y: -3600000
   - m_Collider: {fileID: 155880658}
     m_ColliderPaths:
-    - - X: 7625000
+    - - X: 7624999
         Y: 3600000
-      - X: 3175000
+      - X: 3174999
         Y: 3600000
-      - X: 3175000
+      - X: 3174999
         Y: -3600000
-      - X: 7625000
+      - X: 7624999
         Y: -3600000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.7624707, y: -0.36}
-      - {x: 0.7624707, y: 0.36}
-      - {x: 0.3175, y: 0.35997072}
-      - {x: 0.3175293, y: -0.36}
+    - - {x: 0.7624706, y: -0.36}
+      - {x: 0.7624706, y: 0.36}
+      - {x: 0.3174999, y: 0.35997072}
+      - {x: 0.3175292, y: -0.36}
     - - {x: -0.2775293, y: -0.36}
       - {x: -0.2775293, y: 0.36}
       - {x: -0.7224999, y: 0.35997072}
@@ -3154,9 +3157,9 @@ CompositeCollider2D:
     m_ColliderPaths:
     - - X: 14930000
         Y: 5000000
-      - X: 4929999
+      - X: 4930000
         Y: 5000000
-      - X: 4929999
+      - X: 4930000
         Y: -5000000
       - X: 14930000
         Y: -5000000
@@ -3211,6 +3214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodId: 0
   isOpen: 0
+  level: 0
 --- !u!4 &1056183278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2247936061294109164, guid: 7e7cc3ac8f0759d4c9213e11ad6fd976, type: 3}
@@ -3662,7 +3666,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1346610191501965507, guid: 7e7cc3ac8f0759d4c9213e11ad6fd976, type: 3}
       propertyPath: m_Name
-      value: Map1
+      value: Area1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346610191501965507, guid: 7e7cc3ac8f0759d4c9213e11ad6fd976, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2027710698318614791, guid: 7e7cc3ac8f0759d4c9213e11ad6fd976, type: 3}
       propertyPath: m_Size.x
