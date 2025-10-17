@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     public EWalkType _walkType;
 
+    public int _orderFoodId;
     public Guest _currentGuest;
 
     public void Awake()
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
     public void InitOrder(OrderData orderData)
     {
         // 음식 할당
+        _orderFoodId = orderData._foodId;
         _currentGuest = orderData._orderdGuest;
     }
 

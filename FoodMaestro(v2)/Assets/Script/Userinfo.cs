@@ -9,7 +9,7 @@ public class Userinfo
 
     public Dictionary<int, MapItemData> _dicMapItemData = new Dictionary<int, MapItemData>();
 
-    private Dictionary<int, Kitchen> _dicKitchens = new Dictionary<int, Kitchen>();
+    private Dictionary<string, Kitchen> _dicKitchens = new Dictionary<string, Kitchen>();
     private Dictionary<int, Table> _dicTables = new Dictionary<int, Table>();
 
     public List<Guest> _waitingGuestList = new List<Guest>();
@@ -34,16 +34,25 @@ public class Userinfo
         }
     }
 
+    #region Kitchen
+
     public void InitKitchen(Kitchen[] kitchens)
     {
         _dicKitchens.Clear();
 
         foreach (Kitchen k in kitchens)
         {
-            _dicKitchens[k._foodId] = k;
+            _dicKitchens[$"{k._stageId}_{k._foodId}"] = k;
         }
 
     }
+
+    public Kitchen GetKitchen(int foodId)
+    {
+        return _dicKitchens[$"{_currentStageIndex}_{foodId}"];
+    }
+
+    #endregion
 
     public void InitTable(Table[] tables)
     {

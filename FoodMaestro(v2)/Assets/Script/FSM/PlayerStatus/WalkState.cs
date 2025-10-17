@@ -30,9 +30,9 @@ public class WalkState : State<Player>
         {
             case EWalkType.ToOrder:
                 goal = _context._currentGuest.transform.position;
-                goal += Vector2.down;       // offset
                 break;
             case EWalkType.ToCook:
+                goal = Managers.Instance.GetUserinfo().GetKitchen(_context._orderFoodId)._position;
                 break;
             case EWalkType.ToServing:
                 break;
@@ -40,6 +40,7 @@ public class WalkState : State<Player>
                 break;
         }
 
+        goal += Vector2.down;       // offset
         return goal;
     }
 

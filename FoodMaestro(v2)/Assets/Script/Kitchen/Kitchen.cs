@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Kitchen : MonoBehaviour
 {
+    public int _stageId; 
     public int _foodId;
 
     public bool isOpen;
