@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class IdleState : State<Player>
+public class IdleState : State<Maker>
 {
 
     Userinfo userinfo => Managers.Instance.GetUserinfo();
@@ -26,6 +26,7 @@ public class IdleState : State<Player>
 
         while (true)
         {
+
             // 요리
             if (userinfo._orderDataList.Count > 0)
             {

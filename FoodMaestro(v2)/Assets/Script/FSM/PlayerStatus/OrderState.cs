@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderState : State<Player>
+public class OrderState : State<Maker>
 {
     public override void OnEnter()
     {

@@ -11,15 +11,16 @@ public enum EWalkType
 
 }
 
-public class Player : MonoBehaviour
+public class Maker : MonoBehaviour
 {
-    public StateMachine<Player> _stateMachine;
+    public StateMachine<Maker> _stateMachine;
     public PolyNavAgent _agent;
 
     public EWalkType _walkType;
 
     public int _orderFoodId;
     public Guest _currentGuest;
+
 
     public void Awake()
     {
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void Init()
     {
-        _stateMachine = new StateMachine<Player>(this, new IdleState());
+        _stateMachine = new StateMachine<Maker>(this, new IdleState());
         _stateMachine.AddState(new WalkState());
         _stateMachine.AddState(new OrderState());
     }

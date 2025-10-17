@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkState : State<Player>
+public class WalkState : State<Maker>
 {
     Vector2 goalVec = Vector2.zero;
     public override void OnEnter()

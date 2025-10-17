@@ -109,8 +109,10 @@ public class Userinfo
     {
         if (_orderDataList.Count <= 0) return null;
 
-        OrderData order = _orderDataList.First();
-        _orderDataList.RemoveAt(0);
+        // 요리 가능한 (주방이 비어있는) 주문 먼저 반환
+        OrderData order = _orderDataList.Where(o => _dicKitchens[$"{_currentStageIndex}_{o._foodId}"]._makers.Any(m => m == null)).FirstOrDefault();  
+        if(order != null)
+            _orderDataList.Remove(order);
         return order;
     }
 

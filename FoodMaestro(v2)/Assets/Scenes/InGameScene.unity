@@ -5543,7 +5543,7 @@ GameObject:
   - component: {fileID: 598436296}
   - component: {fileID: 598436298}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Maker(Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5654,10 +5654,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 598436295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786210fa33685154fab1e809adde1ee1, type: 3}
+  m_Script: {fileID: 11500000, guid: 96ff2f23f303b104cbc1840802fc7dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
+  _agent: {fileID: 598436298}
   _walkType: 0
   _orderFoodId: 0
   _currentGuest: {fileID: 0}
@@ -6241,6 +6241,9 @@ MonoBehaviour:
   _stageId: 0
   _foodId: 0
   isOpen: 0
+  _cookwareObj:
+  - {fileID: 1980902978}
+  - {fileID: 1679146105}
   level: 0
 --- !u!4 &1056183278 stripped
 Transform:
