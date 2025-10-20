@@ -8,6 +8,7 @@ public class Managers : Singleton<Managers>
     private MapManager _mapManager = new MapManager();
     private DBManager _dbManager = new DBManager();
     private ResourceObjectManager _resourceObjectManager = new ResourceObjectManager();
+    private CameraManager _cameraManager = new CameraManager();
 
     public Userinfo GetUserinfo()
     {
@@ -27,5 +28,10 @@ public class Managers : Singleton<Managers>
     public ResourceObjectManager GetResourceObjectManager()
     {
         return _resourceObjectManager;
+    }
+
+    public CameraManager GetCameraManager()
+    {
+        return _cameraManager;
     }
 }

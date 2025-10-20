@@ -30,7 +30,6 @@ public class InGameScene : MonoBehaviour
         Managers.Instance.GetUserinfo().InitFoodItemData();
         Managers.Instance.GetUserinfo().InitMapItemData();
 
-
         Managers.Instance.GetMapManager().LoadMap();
     }
 
