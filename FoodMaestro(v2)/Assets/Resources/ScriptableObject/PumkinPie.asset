@@ -16,3 +16,4 @@ MonoBehaviour:
   _stageID: 0
   _name: "\uD638\uBC15\uD30C\uC774"
   _sprite: {fileID: 21300072, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
+  _time: 7

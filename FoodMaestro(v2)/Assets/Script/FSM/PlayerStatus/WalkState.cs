@@ -52,6 +52,7 @@ public class WalkState : State<Maker>
                 _context._stateMachine.ChangeState<OrderState>();
                 break;
             case EWalkType.ToCook:
+                _context._stateMachine.ChangeState<CookState>();
                 break;
             case EWalkType.ToServing:
                 break;

@@ -10,4 +10,5 @@ public class FoodData : ScriptableObject
     public int _stageID;
     public string _name;
     public Sprite _sprite;
+    public float _time;
 }

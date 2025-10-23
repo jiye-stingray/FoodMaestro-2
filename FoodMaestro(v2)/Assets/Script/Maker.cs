@@ -2,6 +2,7 @@ using PolyNav;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EWalkType
 { 
@@ -13,6 +14,8 @@ public enum EWalkType
 
 public class Maker : MonoBehaviour
 {
+    public Image _timerImg;
+
     public StateMachine<Maker> _stateMachine;
     public PolyNavAgent _agent;
 
@@ -40,12 +43,16 @@ public class Maker : MonoBehaviour
 
     private void Init()
     {
+        _timerImg.gameObject.SetActive(false);
         _stateMachine = new StateMachine<Maker>(this, new IdleState());
         _stateMachine.AddState(new WalkState());
         _stateMachine.AddState(new OrderState());
+        _stateMachine.AddState(new CookState());
+
+        _timerImg.gameObject.SetActive(false);
     }
 
-    public void InitType(EWalkType walkType)
+    public void InitType(EWalkType walkType) 
     {
         _walkType = walkType;
     }

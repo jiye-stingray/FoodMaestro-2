@@ -126,7 +126,8 @@ public class Userinfo
             {
                 _id = data._id,
                 _stageId = data._stageID,
-                _isOpen = false
+                _isOpen = false,
+                _reductionTime = 0f
             };
             _dicFoodItemData.Add($"{foodItemData._stageId}_{foodItemData._id}", foodItemData);
         }
@@ -136,11 +137,12 @@ public class Userinfo
 
     public FoodItemData GetRandomOrderFood()
     {
-
         var ableFoodList = _dicFoodItemData.Where(pair => pair.Value._isOpen && pair.Value._id <= _dicMapItemData[_currentStageIndex]._areaLevel).ToList();
         return ableFoodList[Random.Range(0, ableFoodList.Count)].Value;
-
     }
 
-
+    public FoodItemData GetFoodItemData(string foodID)
+    {
+        return _dicFoodItemData[foodID];
+    }
 }
