@@ -48,6 +48,7 @@ public class Maker : MonoBehaviour
         _stateMachine.AddState(new WalkState());
         _stateMachine.AddState(new OrderState());
         _stateMachine.AddState(new CookState());
+        _stateMachine.AddState(new ServingState());
 
         _timerImg.gameObject.SetActive(false);
     }

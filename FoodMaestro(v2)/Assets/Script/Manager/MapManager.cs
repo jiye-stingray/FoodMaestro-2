@@ -20,4 +20,9 @@ public class MapManager : MonoBehaviour
         }
 
     }
+
+    public Map ReturnCurrentMap()
+    {
+        return _dicMaps[Managers.Instance.GetUserinfo()._currentStageIndex];
+    }
 }

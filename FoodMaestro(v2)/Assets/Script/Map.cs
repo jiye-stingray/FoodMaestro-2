@@ -10,8 +10,14 @@ public class Map : MonoBehaviour
 
     public MapItemData _mapItemData;
 
+    [SerializeField] Transform _doorTrans;
+
+    public Transform Door => _doorTrans;
+
     public void Init()
     {
         _mapItemData = Managers.Instance.GetUserinfo()._dicMapItemData[_stageIndex];
     }
+
+ 
 }

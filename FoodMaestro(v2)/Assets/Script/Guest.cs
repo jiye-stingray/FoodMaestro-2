@@ -10,6 +10,7 @@ public class Guest : MonoBehaviour
     [SerializeField] GameObject _orderGo;
     [SerializeField] OrderIcon[] _orderIcon;
 
+    public int _tableId;
     bool isOrdered = false; // 주문 했는가?
     PolyNavAgent _agent;
 
@@ -17,8 +18,10 @@ public class Guest : MonoBehaviour
 
    List<OrderData> _orderList = new List<OrderData>();      // 주문 목록
 
-    public void Init()
+    public void Init(int tableId)
     {
+        _tableId = tableId;
+
         _worldCanvas.worldCamera = Managers.Instance.GetCameraManager().UICam;
 
         _agent = GetComponent<PolyNavAgent>();
@@ -46,7 +49,7 @@ public class Guest : MonoBehaviour
             _orderList.Add(orderData);
         }
         DrawOrderIcon();
-        userinfo.AddOrder(_orderList);
+        userinfo.AddOrder(_orderList.ToList());
         
         isOrdered = true;
     }
@@ -70,9 +73,17 @@ public class Guest : MonoBehaviour
         _agent.SetDestination(position);
     }
 
+    /// <summary>
+    /// 목적지 (테이블) 도착 시
+    /// </summary>
     public void DestinationReached()
     {
-        if (isOrdered) return;
+        if (isOrdered)
+        {
+            // 주문 한 상태에서 목표에 도착했다면 밖으로 나간 상태 
+            Destroy(gameObject);
+            return;
+        }
 
         userinfo.AddGuestList(this);
     }
@@ -86,5 +97,23 @@ public class Guest : MonoBehaviour
 
         }
         _orderGo.SetActive(false);
+    }
+
+    public void Servinged(int foodId)
+    {
+        _orderList.RemoveAt(_orderList.FindIndex(x => x._foodId == foodId));
+
+        UnableOrderIcon();
+        DrawOrderIcon();
+
+        if(_orderList.Count <= 0) 
+        {
+            // table 비우기
+            Managers.Instance.GetUserinfo().RemoveTable(_tableId);
+
+            // 집 가기
+            MoveTo(Managers.Instance.GetMapManager().ReturnCurrentMap().Door.position);
+            
+        }
     }
 }

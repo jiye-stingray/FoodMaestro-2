@@ -69,6 +69,11 @@ public class Userinfo
         return _dicTables.Values.Any(t => t._guest == null);
     }
 
+    public void RemoveTable(int tableID)
+    {
+        _dicTables[tableID]._guest = null;
+    }
+
     #region Guest
 
     public void CreateGuest()
@@ -76,7 +81,7 @@ public class Userinfo
         Table table = _dicTables.FirstOrDefault(t => t.Value._guest == null).Value;
         Guest guest = Managers.Instance.GetResourceObjectManager().Instantiate("Prefabs/Guest").GetComponent<Guest>();
         if (guest == null) { Debug.LogError("null prefab"); }
-        guest.Init();
+        guest.Init(table._id);
         table.SetGuest(guest);
     }
 

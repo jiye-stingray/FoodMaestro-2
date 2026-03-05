@@ -35,6 +35,7 @@ public class WalkState : State<Maker>
                 goal = Managers.Instance.GetUserinfo().GetKitchen(_context._orderFoodId)._position;
                 break;
             case EWalkType.ToServing:
+                goal = _context._currentGuest.transform.position;
                 break;
             default:
                 break;
@@ -55,6 +56,7 @@ public class WalkState : State<Maker>
                 _context._stateMachine.ChangeState<CookState>();
                 break;
             case EWalkType.ToServing:
+                _context._stateMachine.ChangeState<ServingState>();
                 break;
         }
 
