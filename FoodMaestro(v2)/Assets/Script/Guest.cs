@@ -103,6 +103,11 @@ public class Guest : MonoBehaviour
     {
         _orderList.RemoveAt(_orderList.FindIndex(x => x._foodId == foodId));
 
+        // 손님이 음식을 받았을 때 해당 음식 가격만큼 플레이어 골드 지급
+        FoodData foodData = Managers.Instance.GetDBManager().GetFooddata($"{userinfo._currentStageIndex}_{foodId}");
+        if (foodData != null)
+            userinfo.AddGold(foodData._price);
+
         UnableOrderIcon();
         DrawOrderIcon();
 

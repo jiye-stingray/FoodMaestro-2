@@ -17,7 +17,7 @@ public class UIKitchen : MonoBehaviour
 
     public void Refresh()
     {
-         _icon.sprite = _foodData._sprite;
+        _icon.sprite = _foodData._sprite;
         _nameTxt.text = _foodData._name;
     }
 }

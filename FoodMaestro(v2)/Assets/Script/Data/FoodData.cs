@@ -11,4 +11,5 @@ public class FoodData : ScriptableObject
     public string _name;
     public Sprite _sprite;
     public float _time;
+    public int _price;  // 판매 가격 (손님이 음식 받을 때 플레이어에게 지급)
 }

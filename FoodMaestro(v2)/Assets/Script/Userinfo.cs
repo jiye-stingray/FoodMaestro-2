@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniRx;
 
 public class Userinfo
 {
     public int _currentStageIndex;
+    /// <summary> 플레이어 보유 골드 (변경 시 UI 등에서 Subscribe로 실시간 반영) </summary>
+    public ReactiveProperty<int> Gold { get; } = new ReactiveProperty<int>(0);
 
     public Dictionary<int, MapItemData> _dicMapItemData = new Dictionary<int, MapItemData>();
 
@@ -149,5 +152,13 @@ public class Userinfo
     public FoodItemData GetFoodItemData(string foodID)
     {
         return _dicFoodItemData[foodID];
+    }
+
+    /// <summary>
+    /// 플레이어 골드 증가 (손님이 음식 받을 때 호출)
+    /// </summary>
+    public void AddGold(int amount)
+    {
+        Gold.Value += amount;
     }
 }
